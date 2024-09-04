@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import {
   Button,
   Container,
@@ -5,21 +6,34 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import { useState } from "react";
 
-const Bar = () => {
-  return <LinearProgress variant="determinate" value={0} />;
+const Bar = ({ value }: { value: number }) => {
+  return <LinearProgress variant="determinate" value={value} />;
 };
 
 export const Home = () => {
   const [bars, setBars] = useState<number[]>([]);
-// TODO: hold state of which LinearProgress bar is filling
-// then update the state to the next one when that finishes
+  const [currentProgressBarIndex, setCurrentProgressBarIndex] =
+    useState<number>(-1);
 
   const handleClick = () => {
-    setBars([...bars, 1]);
+    setBars([...bars, 0]);
   };
 
+  useEffect(() => {
+    if (currentProgressBarIndex < bars.length - 1) {
+      setCurrentProgressBarIndex(currentProgressBarIndex + 1);
+    }
+  }, [bars]);
+
+  useEffect(() => {
+    if (currentProgressBarIndex >= 0) {
+      const updatedBars = [...bars];
+      updatedBars[currentProgressBarIndex] = 100;
+      setBars(updatedBars);
+    }
+  }, [currentProgressBarIndex]);
+ 
   return (
     <Container maxWidth="lg">
       <Typography variant="h3" component="h1">
@@ -30,8 +44,8 @@ export const Home = () => {
           <Button variant="contained" color="primary" onClick={handleClick}>
             Add Bar
           </Button>
-          {bars.map(() => (
-            <Bar />
+          {bars.map((value, index) => (
+            <Bar key={index} value={value} />
           ))}
         </Stack>
       </Container>
