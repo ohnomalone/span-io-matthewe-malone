@@ -28,6 +28,10 @@ pnpm run dev
 
 open your browser and navigate to the development URL displayed in the console.
 
+## Mobile Responsiveness
+
+This project has been designed to be mobile-responsive, ensuring a seamless user experience across different screen sizes. You can test the responsiveness by resizing your browser window or the dev tools within the browser.
+
 ## Packages Used
 
 ### 1. [Material-UI (MUI)](https://mui.com/)
