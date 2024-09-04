@@ -1,50 +1,65 @@
-# React + TypeScript + Vite
+# Frontend Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a React frontend for [Span](span.io) technical interview. I have chosen the following tools and libraries to create a robust, efficient, and maintainable user interface. Below you'll find instructions on how to get started, along with an explanation of the packages used and why they were chosen.
 
-Currently, two official plugins are available:
+## Getting Started
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Prerequisites
 
-## Expanding the ESLint configuration
+Make sure you have [pnpm](https://pnpm.io/installation) installed. PNPM is a fast, disk space-efficient package manager. Follow the installation instructions on the PNPM website to install it for your system.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Installation
 
-- Configure the top-level `parserOptions` property like this:
+To install the project's dependencies, run the following command in your terminal:
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```bash
+pnpm install
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+This will install the required packages and start the development server at the specified local URL.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## Running the Project
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+Once you’ve installed the dependencies, start the development server, run the following command in your terminal::
+
+```bash
+pnpm run dev
 ```
+
+open your browser and navigate to the development URL displayed in the console.
+
+## Mobile Responsiveness
+
+This project has been designed to be mobile-responsive, ensuring a seamless user experience across different screen sizes. You can test the responsiveness by resizing your browser window or the dev tools within the browser.
+
+## Packages Used
+
+### 1. [Material-UI (MUI)](https://mui.com/)
+
+- **Purpose**: MUI is used for both styling and providing a set of ready-to-use, customizable components.
+- **Why**: It significantly reduces the amount of time spent on designing and styling elements, while providing a sleek and modern look for your application.
+
+### 2. [Axios](https://axios-http.com/)
+
+- **Purpose**: Axios is used to make HTTP requests to APIs, handle responses, and manage errors.
+- **Why**: Axios simplifies the process of sending requests and managing responses in a more readable and concise manner than using the native `fetch` API. It also includes automatic conversion of JSON data and easier error handling.
+
+### 3. [@tanstack/react-query](https://tanstack.com/query/latest)
+
+- **Purpose**: React Query acts as an abstraction layer between Axios and the components that use the fetched data. It also offers client-side caching, which helps in managing and reusing data.
+- **Why**: It helps with data fetching, synchronization, and caching, making the application more efficient and providing automatic refetching, background synchronization, and cache updates without the need for manual state management. React Query ensures the app remains responsive and efficient, especially when dealing with remote data.
+
+### 4. [react-hook-form](https://react-hook-form.com/)
+
+- **Purpose**: React Hook Form is used to manage form state and handle form validation.
+- **Why**: This library simplifies form creation by managing the state of form inputs while providing better performance and a cleaner API. It’s lightweight and helps manage complex form interactions with minimal re-renders, improving overall efficiency.
+
+### 5. [react-router-dom](https://reactrouter.com/)
+
+- **Purpose**: React Router DOM is used to set up and manage routing in the application.
+- **Why**: It provides a simple way to define routes and handle navigation within the React app, making it easy to build Single Page Applications (SPA). With features like dynamic routing, nested routes, and route protection, it simplifies navigation while providing flexibility.
+
+### 6. [Yup](https://github.com/jquense/yup)
+
+- **Purpose**: Yup is used as a schema builder for runtime value parsing and validation.
+- **Why**: Yup provides expressive, chainable validations that allow you to define complex rules for form input validation. It integrates seamlessly with `react-hook-form`, making it easy to validate and transform user input before it is processed by the application.
